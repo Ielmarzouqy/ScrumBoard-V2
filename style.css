@@ -1,0 +1,46 @@
+.pace {
+    display: none;
+}
+
+.main-style {
+    min-height: 100vh;
+    background-image: linear-gradient(#16213E 80%,#533483 100%);
+    background-size: 360px;
+    background-position: right bottom;
+    background-attachment: fixed;
+}
+.btn , .btn:hover{
+    color: white;
+    background-color:#E94560;
+}
+.btn2{
+    color:#E94560;
+    background-color:white;
+    padding: 2%;
+    border-radius: 10%;
+
+}
+.btn4{
+    color:aliceblue;
+    background-color : #aa24c8;
+    margin-left: 75%;
+    border-radius: 10%;
+}
+.btn3{
+    color:aliceblue;
+    background-color : #e50e4b;
+    margin-left: 75%;
+    border-radius: 10%;
+}
+.grad2{
+    background-image: linear-gradient( #E94560  , #0F3460 );
+}
+.modal-body{
+    background-color:#0F3460;
+}
+.modal-footer{
+    background-color:#0F3460;
+}
+#msg{
+    color: #f0798d ;
+}
