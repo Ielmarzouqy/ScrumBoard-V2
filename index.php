@@ -1,5 +1,9 @@
 <?php
     include('scripts.php');
+	include('include/database.php');
+	// include('include/data.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -54,6 +58,30 @@
 
 						<div class="" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
+							<?php
+							getTasks(1);
+							?>	
+							 <button class="task p-3 border-0 text-white bg-none mt-2 col-12 d-flex">
+							   <div class="">
+							   <i class="bi bi-check-circle  text-success me-2"></i> 
+							   </div>
+							   <div class="text-start">
+								   <div class="text-white"><?php $row['title']?></div>
+								   <div class="">
+									   <div class="">#${compt}  ${tasks[i]["date"]}</div>
+									   <div class="" title=" and details in the main/primary description of a tas."> ${description.slice(1,55)}...</div>
+								   </div>
+								   <div class="mt-2 ms-4">
+									   <span class="btn"> ${["priority"]}</span>
+									   <span class="btn2"> <?php ?></span>
+								   </div>
+								   </div>
+								   <div class = "">
+								   <button onclick = "" type="button" class="btn4 me-3 mb-3 float-right border"  data-toggle="modal" data-target="#modal-task" >Edit</button>
+								   <button onclick = "" type="button" class="btn3 me-3 float-right border" data-dismiss="modal">Delete</button>
+								   </div>
+							   </div>
+						   </button>			   
 						</div>
 					</div>
 				</div>
@@ -66,6 +94,30 @@
 						</div>
 						<div class="" id="in-progress-tasks">
 							<!-- IN PROGRESS TASKS HERE -->
+							<?php
+							getTasks(2);
+							?>
+							<!-- <button class="task p-3 border-0 text-white bg-none mt-2 col-12 d-flex">
+							   <div class="">
+							   <i class="bi bi-check-circle  text-success me-2"></i> 
+							   </div>
+							   <div class="text-start">
+								   <div class="text-white"> ${["title"]}</div>
+								   <div class="">
+									   <div class="">#${compt}  ${tasks[i]["date"]}</div>
+									   <div class="" title=" and details in the main/primary description of a tas."> ${description.slice(1,55)}...</div>
+								   </div>
+								   <div class="mt-2 ms-4">
+									   <span class="btn"> ${["priority"]}</span>
+									   <span class="btn2"> <?php ?></span>
+								   </div>
+								   </div>
+								   <div class = "">
+								   <button onclick = "prepareTaskData(${i})" type="button" class="btn4 me-3 mb-3 float-right border"  data-toggle="modal" data-target="#modal-task" >Edit</button>
+								   <button onclick = "deleteTask( ${i})" type="button" class="btn3 me-3 float-right border" data-dismiss="modal">Delete</button>
+								   </div>
+							   </div>
+						   </button> -->
 						</div>
 					</div>
 				</div>
@@ -77,6 +129,30 @@
 						</div>
 						<div class=" " id="done-tasks">
 							<!-- DONE TASKS HERE -->
+							<?php
+							getTasks(3);
+							?>
+							<!-- <button class="task p-3 border-0 text-white bg-none mt-2 col-12 d-flex">
+							   <div class="">
+							   <i class="bi bi-check-circle  text-success me-2"></i> 
+							   </div>
+							   <div class="text-start">
+								   <div class="text-white"> ${["title"]}</div>
+								   <div class="">
+									   <div class="">#${compt}  ${tasks[i]["date"]}</div>
+									   <div class="" title=" and details in the main/primary description of a tas."> ${description.slice(1,55)}...</div>
+								   </div>
+								   <div class="mt-2 ms-4">
+									   <span class="btn"> ${["priority"]}</span>
+									   <span class="btn2"> <?php ?></span>
+								   </div>
+								   </div>
+								   <div class = "">
+								   <button onclick = "prepareTaskData(${i})" type="button" class="btn4 me-3 mb-3 float-right border"  data-toggle="modal" data-target="#modal-task" >Edit</button>
+								   <button onclick = "deleteTask( ${i})" type="button" class="btn3 me-3 float-right border" data-dismiss="modal">Delete</button>
+								   </div>
+							   </div>
+						   </button> -->
 						</div>
 					</div>
 				</div>
@@ -92,7 +168,7 @@
 	<!-- END #app -->
 
 	<!-- TASK MODAL -->
-	<form class=" form modal fade" id="modal-task" role="dialog" aria-labelledby="exempleModalLabel" aria-hidden="true">
+	<form action = "./scripts.php" method="POST" class=" form modal fade" id="modal-task" role="dialog" aria-labelledby="exempleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content  text-white">
 				<div class="modal-header border-0 grad2">
@@ -103,19 +179,19 @@
 				<div class="modal-body ">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label">Title</label>
-						<input type="text" class="form-control TaskInput" id="title" name = "title"><br>
+						<input type="text" class="form-control TaskInput" id= "title" name = "title"><br>
 						<div id="msg"></div>
 					</div>
 					<div class="mb-3 d-flex ">
 						<label for="" class="col-form-label"  >Type</label>
 						<div class="form-check ms-2 mt-5 ">
-							<input class="form-check-input" type="radio" name="type" id="typeB" checked>
+							<input class="form-check-input" type="radio" name="type" id="typeB" value="2" checked>
 							<label class="form-check-label" for="flexRadioDefault1">
 							Bug
 							</label>
 						</div>
 						<div class="form-check ms-5 mt-5">
-							<input class="form-check-input" type="radio" name="type" id="typeF">
+							<input class="form-check-input" type="radio" name="type" value="1" id="typeF">
 							<label class="form-check-label" for="flexRadioDefault2">
 								Feature
 							</label>
@@ -125,18 +201,19 @@
 						<label for="Priority" class="col-form-label">Priority</label>
 						<select class="form-select" aria-label="Default select example" id="priority" name = "priority">
 							<option selected >Please select</option>
-							<option value="High">High</option>
-							<option value="Medium">Medium</option>
-							<option value="Low">Low</option>
+							<option value="1">Critical</option>
+							<option value="2">High</option>
+							<option value="3">Medium</option>
+							<option value="4">Low</option>
 						</select>
 					</div>
 					<div class="mb-3">
 						<label for="status" class="col-form-label" >Status</label>
 						<select class="form-select" aria-label="Default select example" id="status" name = "status">
 							<option selected>Please select</option>
-							<option value="To Do">To Do</option>
-							<option value="In Progress">IN Progress</option>
-							<option value="Done">Done</option>
+							<option value="1">To Do</option>
+							<option value="2">IN Progress</option>
+							<option value="3">Done</option>
 							
 						</select>
 					</div> 
@@ -152,7 +229,7 @@
 				<div class="modal-footer border-0">
 					<button type="button" class="btn2   border" data-dismiss="modal">Cancel</button>
 					<button type="button" id = "update" class="btn btn-warning  border " data-dismiss="modal" onclick="editTask()">update</button>
-				<button  type="submit" class="btn" id="save" onclick="saveTask();" data-dismiss="modal">Save</button>
+					<button  type="submit" name="save" class="btn" id="save" >Save</button>
 				</div>
 			</div>
 		</div>
