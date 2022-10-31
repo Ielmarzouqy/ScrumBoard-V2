@@ -60,28 +60,9 @@
 							<!-- TO DO TASKS HERE -->
 							<?php
 							getTasks(1);
+							
 							?>	
-							 <button class="task p-3 border-0 text-white bg-none mt-2 col-12 d-flex">
-							   <div class="">
-							   <i class="bi bi-check-circle  text-success me-2"></i> 
-							   </div>
-							   <div class="text-start">
-								   <div class="text-white"><?php $row['title']?></div>
-								   <div class="">
-									   <div class="">#${compt}  ${tasks[i]["date"]}</div>
-									   <div class="" title=" and details in the main/primary description of a tas."> ${description.slice(1,55)}...</div>
-								   </div>
-								   <div class="mt-2 ms-4">
-									   <span class="btn"> ${["priority"]}</span>
-									   <span class="btn2"> <?php ?></span>
-								   </div>
-								   </div>
-								   <div class = "">
-								   <button onclick = "" type="button" class="btn4 me-3 mb-3 float-right border"  data-toggle="modal" data-target="#modal-task" >Edit</button>
-								   <button onclick = "" type="button" class="btn3 me-3 float-right border" data-dismiss="modal">Delete</button>
-								   </div>
-							   </div>
-						   </button>			   
+							
 						</div>
 					</div>
 				</div>
@@ -97,27 +78,7 @@
 							<?php
 							getTasks(2);
 							?>
-							<!-- <button class="task p-3 border-0 text-white bg-none mt-2 col-12 d-flex">
-							   <div class="">
-							   <i class="bi bi-check-circle  text-success me-2"></i> 
-							   </div>
-							   <div class="text-start">
-								   <div class="text-white"> ${["title"]}</div>
-								   <div class="">
-									   <div class="">#${compt}  ${tasks[i]["date"]}</div>
-									   <div class="" title=" and details in the main/primary description of a tas."> ${description.slice(1,55)}...</div>
-								   </div>
-								   <div class="mt-2 ms-4">
-									   <span class="btn"> ${["priority"]}</span>
-									   <span class="btn2"> <?php ?></span>
-								   </div>
-								   </div>
-								   <div class = "">
-								   <button onclick = "prepareTaskData(${i})" type="button" class="btn4 me-3 mb-3 float-right border"  data-toggle="modal" data-target="#modal-task" >Edit</button>
-								   <button onclick = "deleteTask( ${i})" type="button" class="btn3 me-3 float-right border" data-dismiss="modal">Delete</button>
-								   </div>
-							   </div>
-						   </button> -->
+							
 						</div>
 					</div>
 				</div>
@@ -132,27 +93,7 @@
 							<?php
 							getTasks(3);
 							?>
-							<!-- <button class="task p-3 border-0 text-white bg-none mt-2 col-12 d-flex">
-							   <div class="">
-							   <i class="bi bi-check-circle  text-success me-2"></i> 
-							   </div>
-							   <div class="text-start">
-								   <div class="text-white"> ${["title"]}</div>
-								   <div class="">
-									   <div class="">#${compt}  ${tasks[i]["date"]}</div>
-									   <div class="" title=" and details in the main/primary description of a tas."> ${description.slice(1,55)}...</div>
-								   </div>
-								   <div class="mt-2 ms-4">
-									   <span class="btn"> ${["priority"]}</span>
-									   <span class="btn2"> <?php ?></span>
-								   </div>
-								   </div>
-								   <div class = "">
-								   <button onclick = "prepareTaskData(${i})" type="button" class="btn4 me-3 mb-3 float-right border"  data-toggle="modal" data-target="#modal-task" >Edit</button>
-								   <button onclick = "deleteTask( ${i})" type="button" class="btn3 me-3 float-right border" data-dismiss="modal">Delete</button>
-								   </div>
-							   </div>
-						   </button> -->
+							 
 						</div>
 					</div>
 				</div>
@@ -199,7 +140,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="Priority" class="col-form-label">Priority</label>
-						<select class="form-select" aria-label="Default select example" id="priority" name = "priority">
+						<select class="form-select " aria-label="Default select example" id="priority" name = "priority">
 							<option selected >Please select</option>
 							<option value="1">Critical</option>
 							<option value="2">High</option>
