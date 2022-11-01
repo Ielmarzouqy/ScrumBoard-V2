@@ -27,7 +27,7 @@
                 // echo "Fetch all tasks";
                 if ($row['status'] == $status){
                    echo '
-                        <button id ="id_task" class="d-flex" onclick ="edit_tasks(`'.$row['title'].'`, `'.$row['date'].'`, `'.$row['description'].'`, `'.$row['priority'].'`, `'.$row['type'].'`, `'.$row['status'].'`)" data-bs-toggle="modal" data-bs-target="#modal-task">
+                        <button id ="'.$row['id'].'" class="d-flex" onclick ="edit_tasks(`'.$row['title'].'`, `'.$row['date'].'`, `'.$row['description'].'`, `'.$row['priority'].'`, `'.$row['type'].'`, `'.$row['status'].'`)" data-bs-toggle="modal" data-bs-target="#modal-task">
                             <span class = "icon">
                                 <i class="bi bi-question-circle-fill text-green"></i>
                             </span>
