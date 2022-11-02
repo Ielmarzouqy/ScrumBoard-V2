@@ -275,14 +275,15 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
-								getTasks('to do');
+								$icon ='<i class="bi bi-question-circle-fill text-green"></i>';
+								getTasks($icon,'to do');
 							?>
 							<!-- <button class="d-flex">
 								<span class = "icon">
 									<i class="bi bi-question-circle-fill text-green"></i>
 								</span>
 								<div class=" task-body align-center text-start">
-									<div class ="title mb-2"><h5>Title</h5></div>
+									<div class ="title mb-2"><h6>Title</h6></div>
 									<div class = "date mb-2">01-11-2022</div>
 									<div class ="description mb-2" >This is description</div>
 									<span class = "btn btn-danger priority">Priority</span>
@@ -308,7 +309,9 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
-								getTasks('in progress');
+								$icon ='<i class="bi bi-arrow-counterclockwise text-green"></i>';
+								getTasks($icon, 'in progress');
+							
 							?>
 						</div>
 					</div>
@@ -329,7 +332,8 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
-								getTasks('done');
+								$icon ='<i class="bi bi-check-circle-fill text-green"></i>';
+								getTasks($icon, 'done');
 							?>
 						</div>
 					</div>
@@ -359,17 +363,18 @@
 							<input type="hidden" id="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input type="text" class="form-control" id="task-title"/>
+								<input type="text" class="form-control" id="title" name = "title"/>
+								<input type="hidden" id="id_hidden" name="id_hidden">
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task-type" type="radio" value="Feature" id="task-type-feature"/>
+										<input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-feature"/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task-type" type="radio" value="Bug" id="task-type-bug"/>
+										<input class="form-check-input" name="task-type" type="radio" value="2" id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
@@ -377,12 +382,12 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select" id="task-priority">
+								<select class="form-select" id="task-priority" name ="task-priority" >
 									<option value="">Please select</option>
-									<option value="critical">Critical</option>
-									<option value="high">High</option>
-									<option value="medium">Medium</option>
-									<option value="low">Low</option>
+									<option value="1">Critical</option>
+									<option value="2">High</option>
+									<option value="3">Medium</option>
+									<option value="4">Low</option>
 									
 									
 									
@@ -390,20 +395,20 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
-								<select class="form-select" id="task-status">
+								<select class="form-select" id="task-status" name ="task-status">
 									<option value="">Please select</option>
-									<option value="to do">To Do</option>
-									<option value="in progress">In Progress</option>
-									<option value="done">Done</option>
+									<option value="1">To Do</option>
+									<option value="2">In Progress</option>
+									<option value="3">Done</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input type="date" class="form-control" id="task-date"/>
+								<input type="date" class="form-control" id="task-date"name = "task-date"/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
-								<textarea class="form-control" rows="10" id="task-description"></textarea>
+								<textarea class="form-control" rows="10" id="task-description" name = "task-description"></textarea>
 							</div>
 						
 					</div>
@@ -419,36 +424,31 @@
 	</div>
 	
 	<!-- ================== BEGIN core-js ================== -->
+	<script src = "scripts.js"></script>
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
 	<!-- ================== END core-js ================== -->
-	<script src="scripts.js"></script>
 <script>
-	//reloadTasks();
-	function edit_tasks(title, date, description, priority, type, status){
 
-document.getElementById('task-title').value = title;
-document.getElementById('task-date').value = date;
-document.getElementById('task-description').value = description;
-document.getElementById('task-priority').value = priority;
-if(type = task-type-feature){
+	          //reloadTasks();
+			  function edit_tasks( id, title, date, description, priority, type, status){
 
-}else {
-	
-}
-if('task-type-bug'.checked){
-	document.getElementById('task-type-bug').value = type;
-	
-    }else{
-        document.getElementById('task-type-feature').value = type;
-    }
-
-
-document.getElementById('task-status').value = status;
-
-}
-
+			document.getElementById('id_hidden').value = id;
+			document.getElementById('title').value = title;
+			document.getElementById('task-date').value = date;
+			document.getElementById('task-description').value = description;
+			document.getElementById('task-priority').value = priority;
+		   
+			if(type==1){
+				document.getElementById('task-type-feature').checked= true;
+				
+				}else{
+					document.getElementById('task-type-bug').checked = true;
+				}
+			document.getElementById('task-status').value = status;
+			
+			}
 </script>
-	
+
 </body>
 </html>
