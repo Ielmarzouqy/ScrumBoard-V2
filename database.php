@@ -11,10 +11,6 @@
         die ('failed to connect' . mysqli_connect_error());
      }
 
-    //   if (mysqli_query($conn, $sql)) {
-    //        echo "New records created successfully";
-    //      } else {
-    //        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    //      }
+    
         
 ?>
